@@ -47,37 +47,10 @@ export default function AboutPage() {
       gradient: 'from-purple-500 to-violet-600'
     },
     {
-      icon: <Lightbulb className="h-8 w-8 text-primary-600" />,
+      icon: <Shield className="h-8 w-8 text-primary-600" />,
       title: 'Trust',
       description: 'Building long-term relationships based on reliability, consistency, and mutual respect.',
       gradient: 'from-cyan-500 to-blue-600'
-    }
-  ]
-
-  const achievements = [
-    {
-      icon: <Building className="h-8 w-8 text-primary-600" />,
-      number: '500+',
-      label: 'Projects Completed',
-      description: 'Successfully delivered across industries'
-    },
-    {
-      icon: <Users className="h-8 w-8 text-primary-600" />,
-      number: '100+',
-      label: 'Happy Clients',
-      description: 'Satisfied customers worldwide'
-    },
-    {
-      icon: <Calendar className="h-8 w-8 text-primary-600" />,
-      number: '10+',
-      label: 'Years Experience',
-      description: 'Proven track record of excellence'
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-primary-600" />,
-      number: '25+',
-      label: 'Countries Served',
-      description: 'Global reach and expertise'
     }
   ]
 
@@ -104,39 +77,6 @@ export default function AboutPage() {
     }
   ]
 
-  const milestones = [
-    {
-      year: '2015',
-      title: 'Company Founded',
-      description: 'Terrafo International was established with a vision to provide comprehensive business solutions.'
-    },
-    {
-      year: '2017',
-      title: 'Service Expansion',
-      description: 'Expanded our portfolio to include technical solutions and infrastructure development.'
-    },
-    {
-      year: '2019',
-      title: 'Global Reach',
-      description: 'Extended operations internationally, serving clients across multiple countries.'
-    },
-    {
-      year: '2021',
-      title: 'Technology Integration',
-      description: 'Integrated advanced technologies and digital solutions across all service offerings.'
-    },
-    {
-      year: '2023',
-      title: 'Sustainability Focus',
-      description: 'Launched comprehensive sustainability and environmental management programs.'
-    },
-    {
-      year: '2025',
-      title: 'Innovation Hub',
-      description: 'Established innovation centers focused on emerging technologies and solutions.'
-    }
-  ]
-
   return (
     <div className="min-h-screen">
       {/* Enhanced Hero Section */}
@@ -156,7 +96,7 @@ export default function AboutPage() {
               <div className="text-white">
                 <div className="inline-flex items-center bg-primary-100/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
                   <Award className="h-4 w-4 text-primary-200 mr-2" />
-                  <span className="text-primary-200 text-sm font-medium">Established 2015</span>
+                  <span className="text-primary-200 text-sm font-medium">Established 2025</span>
                 </div>
                 <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
                   About
@@ -204,30 +144,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Achievement Stats */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <FadeInView key={index} delay={index * 0.1}>
-                <div className="text-center group">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-primary-100 rounded-xl group-hover:bg-primary-600 transition-all duration-300">
-                      <div className="text-primary-600 group-hover:text-white transition-colors">
-                        {achievement.icon}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-3xl font-bold text-secondary-900 mb-2">{achievement.number}</div>
-                  <div className="text-lg font-semibold text-secondary-800 mb-1">{achievement.label}</div>
-                  <div className="text-sm text-secondary-600">{achievement.description}</div>
-                </div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Company Story */}
       <section className="py-20 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -237,20 +153,23 @@ export default function AboutPage() {
                 <h2 className="text-4xl font-bold text-secondary-900 mb-6">Our Story</h2>
                 <div className="space-y-6 text-lg text-secondary-600">
                   <p>
-                    Founded in 2015 with a vision to revolutionize business solutions, 
-                    Terrafo International has grown from a small startup to a globally 
-                    recognized leader in comprehensive business services.
+                    Founded in 2025 with a vision to revolutionize business solutions, 
+                    Terrafo International has emerged as a dynamic and innovative leader 
+                    in comprehensive business services, built on cutting-edge technology 
+                    and forward-thinking strategies.
                   </p>
                   <p>
                     Our journey began with a simple yet powerful mission: to provide 
                     businesses with the tools, expertise, and support they need to thrive 
-                    in an increasingly complex global marketplace.
+                    in an increasingly complex global marketplace, leveraging the latest 
+                    advancements in technology and business intelligence.
                   </p>
                   <p>
-                    Today, we serve over 100 clients across 25 countries, delivering 
+                    As a modern business solutions provider, we focus on delivering 
                     innovative solutions in import-export, technical services, HR management, 
                     and infrastructure development. Our success is built on the foundation 
-                    of trust, excellence, and unwavering commitment to our clients' success.
+                    of trust, excellence, and unwavering commitment to our clients' success 
+                    in the digital age.
                   </p>
                 </div>
                 
@@ -390,50 +309,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Company Timeline */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">Our Journey</h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                Milestones that mark our growth and evolution as a leading business solutions provider.
-              </p>
-            </div>
-          </FadeInView>
-
-          <div className="relative">
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-0.5 w-0.5 bg-primary-400 h-full"></div>
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <FadeInView key={index} delay={index * 0.2}>
-                  <div className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                      <div className="bg-primary-50 rounded-2xl p-6 border border-primary-200">
-                        <div className="flex items-center mb-4">
-                          <div className="bg-primary-600 text-white text-lg font-bold w-16 h-16 rounded-full flex items-center justify-center mr-4">
-                            {milestone.year}
-                          </div>
-                          <h3 className="text-xl font-bold text-secondary-900">{milestone.title}</h3>
-                        </div>
-                        <p className="text-secondary-600">{milestone.description}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                    
-                    <div className="hidden md:block w-5/12"></div>
-                  </div>
-                </FadeInView>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Team Highlights */}
-      <section className="py-20 bg-primary-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInView>
             <div className="text-center mb-16">
@@ -450,7 +327,7 @@ export default function AboutPage() {
               <FadeInView key={index} delay={index * 0.1}>
                 <div className="text-center group">
                   <div className="flex justify-center mb-6">
-                    <div className="p-4 bg-white rounded-xl shadow-lg group-hover:bg-primary-600 transition-all duration-300">
+                    <div className="p-4 bg-primary-50 rounded-xl shadow-lg group-hover:bg-primary-600 transition-all duration-300 border border-primary-200">
                       <div className="text-primary-600 group-hover:text-white transition-colors">
                         {highlight.icon}
                       </div>
@@ -464,8 +341,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-     
     </div>
   )
 }

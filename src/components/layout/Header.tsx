@@ -2,15 +2,15 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter, usePathname } from 'next/navigation'
-import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react'
+import { ChevronDown, Menu, X, ArrowRight, Grid3X3 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { services } from '@/data/services'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const [hoveredService, setHoveredService] = useState<string | null>(null)
   const timeoutRef = useRef<NodeJS.Timeout>()
   const pathname = usePathname()
   const router = useRouter()
@@ -34,8 +34,7 @@ export default function Header() {
   const handleServicesLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsServicesOpen(false)
-      setHoveredService(null)
-    }, 150)
+    }, 200)
   }
 
   const handleServiceClick = (slug: string) => {
@@ -55,11 +54,10 @@ export default function Header() {
   const dropdownVariants = {
     hidden: { 
       opacity: 0, 
-      y: -10,
-      scale: 0.95,
+      y: -8,
+      scale: 0.96,
       transition: { 
-        duration: 0.2,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: 0.2
       }
     },
     visible: { 
@@ -68,22 +66,9 @@ export default function Header() {
       scale: 1,
       transition: { 
         duration: 0.3,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: [0.16, 1, 0.3, 1]
       }
     }
-  }
-
-  const serviceItemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.3,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    })
   }
 
   const mobileMenuVariants = {
@@ -91,117 +76,80 @@ export default function Header() {
       opacity: 0,
       height: 0,
       transition: {
-        duration: 0.3,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: 0.3
       }
     },
     visible: {
       opacity: 1,
       height: 'auto',
       transition: {
-        duration: 0.3,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: 0.3
       }
     }
   }
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
+    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-200/50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           {/* Logo */}
           <motion.div 
             className="flex items-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
-            <Link href="/" className="flex items-center group">
-              <motion.span 
-                className="text-2xl font-bold text-blue-600 group-hover:text-blue-700 transition-colors"
-                whileHover={{ rotate: [0, -5, 5, 0] }}
-                transition={{ duration: 0.5 }}
-              >
-                Terrafo
-              </motion.span>
-              <span className="text-xl text-gray-700 ml-2 group-hover:text-gray-800 transition-colors">
-                International
-              </span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo1.png"
+                alt="Terrafo International"
+                width={220}
+                height={80}
+                priority
+                className="h-auto w-auto max-h-16"
+              />
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {/* Home Link */}
             <Link href="/">
-              <motion.div
-                className={`px-4 py-2 rounded-lg font-medium transition-all relative ${
-                  isActiveRoute('/') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <div className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                isActiveRoute('/') 
+                  ? 'text-blue-600 bg-blue-50' 
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              }`}>
                 Home
-                {isActiveRoute('/') && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
-                    layoutId="activeIndicator"
-                  />
-                )}
-              </motion.div>
+              </div>
             </Link>
 
             {/* About Link */}
             <Link href="/about">
-              <motion.div
-                className={`px-4 py-2 rounded-lg font-medium transition-all relative ${
-                  isActiveRoute('/about') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <div className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                isActiveRoute('/about') 
+                  ? 'text-blue-600 bg-blue-50' 
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              }`}>
                 About
-                {isActiveRoute('/about') && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
-                    layoutId="activeIndicator"
-                  />
-                )}
-              </motion.div>
+              </div>
             </Link>
             
-            {/* Services Dropdown - No Icons, No Scroll */}
+            {/* Services Dropdown */}
             <div 
               className="relative"
               onMouseEnter={handleServicesEnter}
               onMouseLeave={handleServicesLeave}
             >
-              <motion.button 
-                className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all relative ${
-                  isServicesActive() 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className={`flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                isServicesActive() 
+                  ? 'text-blue-600 bg-blue-50' 
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              }`}>
                 Services
-                <motion.div
-                  animate={{ rotate: isServicesOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                >
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </motion.div>
-                {isServicesActive() && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
-                    layoutId="activeIndicator"
-                  />
-                )}
-              </motion.button>
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                  isServicesOpen ? 'rotate-180' : 'rotate-0'
+                }`} />
+              </button>
               
               <AnimatePresence>
                 {isServicesOpen && (
@@ -210,74 +158,65 @@ export default function Header() {
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
-                    className="absolute top-full left-0 mt-2 w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
-                    style={{ transformOrigin: 'top left' }}
+                    className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-200/60 overflow-hidden"
                   >
-                    {/* Dropdown Header */}
+                    {/* Header */}
                     <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 border-b border-gray-100">
                       <Link 
                         href="/services" 
+                        className="group flex items-center justify-between p-2 -m-2 rounded-lg hover:bg-white/70 transition-all duration-200"
                         onClick={() => setIsServicesOpen(false)}
-                        className="group flex items-center justify-between hover:bg-white/50 rounded-lg p-2 -m-2 transition-all"
                       >
-                        <div>
-                          <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                            All Services
-                          </h3>
-                          <p className="text-sm text-gray-600">
-                            Explore our complete service portfolio
-                          </p>
+                        <div className="flex items-center">
+                          <div className="p-2 bg-blue-100 rounded-lg mr-3 group-hover:bg-blue-200 transition-colors">
+                            <Grid3X3 className="h-4 w-4 text-blue-600" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900 text-sm">View All Services</h3>
+                            <p className="text-xs text-gray-600">Complete service portfolio</p>
+                          </div>
                         </div>
-                        <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                        <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-200" />
                       </Link>
                     </div>
 
-                    {/* Services Grid - No Scroll, Grid Layout */}
-                    <div className="p-4 bg-gray-50">
-                      <div className="grid grid-cols-2 gap-3">
-                        {services.map((service, index) => (
-                          <motion.div
-                            key={service.id}
-                            variants={serviceItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                            custom={index}
-                            className={`group rounded-xl transition-all cursor-pointer p-4 ${
-                              hoveredService === service.slug 
-                                ? 'bg-blue-600 text-white scale-[1.02] shadow-lg' 
-                                : 'bg-white hover:bg-blue-50 hover:shadow-md'
-                            }`}
-                            onMouseEnter={() => setHoveredService(service.slug)}
-                            onMouseLeave={() => setHoveredService(null)}
-                            onClick={() => handleServiceClick(service.slug)}
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            <div className="flex flex-col space-y-2">
-                              <h4 className={`font-semibold text-sm transition-colors ${
-                                hoveredService === service.slug 
-                                  ? 'text-white' 
-                                  : 'text-gray-900'
-                              }`}>
+                    {/* Services List */}
+                    <div className="max-h-80 overflow-y-auto p-2">
+                      {services.map((service, index) => (
+                        <motion.button
+                          key={service.id}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.03, duration: 0.2 }}
+                          onClick={() => handleServiceClick(service.slug)}
+                          className="w-full text-left p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 group"
+                        >
+                          <div className="flex items-start justify-between">
+                            <div className="flex-1">
+                              <h4 className="font-medium text-gray-900 text-sm group-hover:text-blue-600 transition-colors">
                                 {service.title}
                               </h4>
-                              <p className={`text-xs transition-colors line-clamp-2 ${
-                                hoveredService === service.slug 
-                                  ? 'text-blue-100' 
-                                  : 'text-gray-600'
-                              }`}>
+                              <p className="text-xs text-gray-500 mt-1 line-clamp-2">
                                 {service.shortDescription}
                               </p>
                             </div>
-                          </motion.div>
-                        ))}
-                      </div>
+                            <ArrowRight className="h-3 w-3 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 ml-2 mt-0.5" />
+                          </div>
+                        </motion.button>
+                      ))}
                     </div>
 
                     {/* Footer */}
-                    <div className="bg-gray-100 px-4 py-3 border-t border-gray-200">
+                    <div className="bg-gray-50 p-3 border-t border-gray-100">
                       <p className="text-xs text-gray-600 text-center">
-                        Need help choosing? <Link href="/contact" className="text-blue-600 hover:text-blue-700 font-medium">Contact our experts →</Link>
+                        Need consultation? 
+                        <Link 
+                          href="/contact" 
+                          className="text-blue-600 hover:text-blue-700 font-medium ml-1"
+                          onClick={() => setIsServicesOpen(false)}
+                        >
+                          Contact us →
+                        </Link>
                       </p>
                     </div>
                   </motion.div>
@@ -287,33 +226,32 @@ export default function Header() {
 
             {/* Contact Link */}
             <Link href="/contact">
-              <motion.div
-                className={`px-4 py-2 rounded-lg font-medium transition-all relative ${
-                  isActiveRoute('/contact') 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <div className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                isActiveRoute('/contact') 
+                  ? 'text-blue-600 bg-blue-50' 
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+              }`}>
                 Contact
-                {isActiveRoute('/contact') && (
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full"
-                    layoutId="activeIndicator"
-                  />
-                )}
+              </div>
+            </Link>
+
+            {/* CTA Button */}
+            <Link href="/contact">
+              <motion.div
+                className="ml-4 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Get Started
               </motion.div>
             </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <motion.button
+          <div className="lg:hidden flex items-center">
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 p-2 rounded-lg hover:bg-gray-50 transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="p-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all duration-200"
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -338,7 +276,7 @@ export default function Header() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.button>
+            </button>
           </div>
         </div>
 
@@ -350,57 +288,45 @@ export default function Header() {
               initial="hidden"
               animate="visible"
               exit="hidden"
-              className="md:hidden overflow-hidden"
+              className="lg:hidden overflow-hidden bg-white border-t border-gray-200/50"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+              <div className="px-4 py-4 space-y-2">
+                {/* Mobile Links */}
                 <Link href="/" onClick={() => setIsOpen(false)}>
-                  <motion.div 
-                    className={`block px-3 py-3 rounded-lg font-medium transition-all ${
-                      isActiveRoute('/') 
-                        ? 'text-blue-600 bg-blue-50' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                    }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
+                  <div className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                    isActiveRoute('/') 
+                      ? 'text-blue-600 bg-blue-50' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}>
                     Home
-                  </motion.div>
+                  </div>
                 </Link>
                 
                 <Link href="/about" onClick={() => setIsOpen(false)}>
-                  <motion.div 
-                    className={`block px-3 py-3 rounded-lg font-medium transition-all ${
-                      isActiveRoute('/about') 
-                        ? 'text-blue-600 bg-blue-50' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                    }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
+                  <div className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                    isActiveRoute('/about') 
+                      ? 'text-blue-600 bg-blue-50' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}>
                     About
-                  </motion.div>
+                  </div>
                 </Link>
                 
-                {/* Mobile Services Dropdown */}
+                {/* Mobile Services */}
                 <div>
-                  <motion.button 
+                  <button 
                     onClick={() => setIsServicesOpen(!isServicesOpen)}
-                    className={`flex items-center justify-between w-full px-3 py-3 rounded-lg font-medium transition-all ${
+                    className={`flex items-center justify-between w-full px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
                       isServicesActive() 
                         ? 'text-blue-600 bg-blue-50' 
                         : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
                     }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
                   >
                     Services
-                    <motion.div
-                      animate={{ rotate: isServicesOpen ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="h-4 w-4" />
-                    </motion.div>
-                  </motion.button>
+                    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                      isServicesOpen ? 'rotate-180' : 'rotate-0'
+                    }`} />
+                  </button>
                   
                   <AnimatePresence>
                     {isServicesOpen && (
@@ -408,40 +334,39 @@ export default function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                        className="overflow-hidden"
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden mt-2 bg-gray-50 rounded-lg"
                       >
-                        <div className="pl-6 space-y-1 mt-2">
+                        <div className="p-2 space-y-1">
                           <Link href="/services" onClick={() => {setIsOpen(false); setIsServicesOpen(false)}}>
-                            <motion.div 
-                              className="block px-3 py-2 text-sm text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg font-medium transition-all"
-                              whileHover={{ x: 4 }}
-                              whileTap={{ scale: 0.98 }}
-                            >
-                              All Services →
-                            </motion.div>
+                            <div className="flex items-center px-3 py-2.5 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-200">
+                              <Grid3X3 className="h-4 w-4 mr-2" />
+                              View All Services
+                              <ArrowRight className="h-3 w-3 ml-auto" />
+                            </div>
                           </Link>
-                          {services.map((service, index) => (
-                            <motion.div
-                              key={service.id}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: index * 0.05, duration: 0.3 }}
-                            >
+                          
+                          <div className="border-t border-gray-200 pt-2 mt-2">
+                            {services.slice(0, 6).map((service) => (
                               <Link
+                                key={service.id}
                                 href={`/services/${service.slug}`}
                                 onClick={() => {setIsOpen(false); setIsServicesOpen(false)}}
                               >
-                                <motion.div 
-                                  className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-all"
-                                  whileHover={{ x: 4 }}
-                                  whileTap={{ scale: 0.98 }}
-                                >
+                                <div className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-white rounded-lg transition-all duration-200">
                                   {service.title}
-                                </motion.div>
+                                </div>
                               </Link>
-                            </motion.div>
-                          ))}
+                            ))}
+                            
+                            {services.length > 6 && (
+                              <Link href="/services" onClick={() => {setIsOpen(false); setIsServicesOpen(false)}}>
+                                <div className="px-3 py-2 text-xs text-gray-500 hover:text-blue-600 transition-colors">
+                                  +{services.length - 6} more services →
+                                </div>
+                              </Link>
+                            )}
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -449,18 +374,26 @@ export default function Header() {
                 </div>
                 
                 <Link href="/contact" onClick={() => setIsOpen(false)}>
-                  <motion.div 
-                    className={`block px-3 py-3 rounded-lg font-medium transition-all ${
-                      isActiveRoute('/contact') 
-                        ? 'text-blue-600 bg-blue-50' 
-                        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                    }`}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
+                  <div className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
+                    isActiveRoute('/contact') 
+                      ? 'text-blue-600 bg-blue-50' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}>
                     Contact
-                  </motion.div>
+                  </div>
                 </Link>
+
+                {/* Mobile CTA */}
+                <div className="pt-4 border-t border-gray-200/50">
+                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                    <motion.div
+                      className="block w-full text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-md"
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Get Started
+                    </motion.div>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           )}

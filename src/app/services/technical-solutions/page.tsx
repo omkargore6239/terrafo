@@ -1,10 +1,9 @@
 // src/app/services/technical-solutions/page.tsx
 import FadeInView from '@/components/animations/FadeInView'
 import { 
-  CheckCircle, ArrowRight, Settings, Monitor, Wrench, Shield, Zap,
-  Users, Clock, Target, ChevronRight, Star, Award, TrendingUp,
-  Calculator, FileText, Phone, Cpu, Code, Database,
-  BarChart, Briefcase, Layers, Network, Server, Workflow
+  CheckCircle, ArrowRight, Settings, Monitor, Wrench, Shield,
+  Users, Code, Database, ChevronRight, Star, Award,
+  Phone, Globe, Workflow, Network
 } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -17,338 +16,192 @@ export const metadata = {
 export default function TechnicalSolutionsPage() {
   const coreServices = [
     {
-      icon: <Settings className="h-6 w-6" />,
+      icon: <Settings className="h-8 w-8" />,
       title: 'System Integration',
-      description: 'Seamless integration of complex systems and technologies for unified operations',
-      features: ['Legacy Integration', 'API Development', 'Data Migration', 'System Compatibility']
+      description: 'Seamless integration of complex systems and technologies to create unified, efficient business operations.',
+      features: [
+        'Legacy System Integration',
+        'API Development & Management',
+        'Data Migration Services',
+        'Cross-Platform Compatibility',
+        'Real-time Synchronization',
+        'Custom Integration Solutions'
+      ],
+      color: 'from-blue-500 to-blue-600'
     },
     {
-      icon: <Workflow className="h-6 w-6" />,
+      icon: <Workflow className="h-8 w-8" />,
       title: 'Process Automation',
-      description: 'Intelligent automation solutions to streamline business processes and workflows',
-      features: ['Workflow Automation', 'Robotic Process Automation', 'Business Logic', 'Task Scheduling']
+      description: 'Intelligent automation solutions designed to streamline workflows and eliminate manual bottlenecks.',
+      features: [
+        'Workflow Automation Design',
+        'Robotic Process Automation',
+        'Business Logic Implementation',
+        'Task Scheduling & Management',
+        'Performance Monitoring',
+        'Continuous Optimization'
+      ],
+      color: 'from-green-500 to-green-600'
     },
     {
-      icon: <Users className="h-6 w-6" />,
+      icon: <Users className="h-8 w-8" />,
       title: 'Technical Consulting',
-      description: 'Expert advisory services for technology strategy and implementation planning',
-      features: ['Technology Assessment', 'Strategic Planning', 'Architecture Design', 'Best Practices']
+      description: 'Expert advisory services for technology strategy, planning, and implementation guidance.',
+      features: [
+        'Technology Assessment',
+        'Strategic Planning Support',
+        'Architecture Design Review',
+        'Best Practices Implementation',
+        'Risk Assessment',
+        'ROI Analysis & Planning'
+      ],
+      color: 'from-purple-500 to-purple-600'
     },
     {
-      icon: <Wrench className="h-6 w-6" />,
+      icon: <Wrench className="h-8 w-8" />,
       title: 'Equipment Installation',
-      description: 'Professional installation and commissioning of technical equipment and systems',
-      features: ['Hardware Setup', 'Configuration', 'Testing & Validation', 'Documentation']
+      description: 'Professional installation, configuration, and commissioning of technical equipment and systems.',
+      features: [
+        'Hardware Setup & Configuration',
+        'System Commissioning',
+        'Testing & Validation',
+        'Documentation & Training',
+        'Compliance Verification',
+        'Post-Installation Support'
+      ],
+      color: 'from-red-500 to-red-600'
     },
     {
-      icon: <Monitor className="h-6 w-6" />,
+      icon: <Monitor className="h-8 w-8" />,
       title: '24/7 Technical Support',
-      description: 'Round-the-clock technical support and monitoring for continuous operations',
-      features: ['Remote Monitoring', 'Help Desk Support', 'Emergency Response', 'Performance Optimization']
+      description: 'Round-the-clock monitoring and support services to ensure continuous system operations.',
+      features: [
+        'Remote System Monitoring',
+        'Help Desk Support Services',
+        'Emergency Response Team',
+        'Performance Optimization',
+        'Preventive Maintenance',
+        'Issue Resolution Tracking'
+      ],
+      color: 'from-orange-500 to-orange-600'
     },
     {
-      icon: <Database className="h-6 w-6" />,
-      title: 'Data Management',
-      description: 'Comprehensive data solutions including storage, analytics, and security',
-      features: ['Database Design', 'Data Analytics', 'Backup Solutions', 'Security Implementation']
+      icon: <Database className="h-8 w-8" />,
+      title: 'Data Management Solutions',
+      description: 'Comprehensive data solutions including storage, analytics, security, and backup services.',
+      features: [
+        'Database Design & Optimization',
+        'Data Analytics Implementation',
+        'Backup & Recovery Solutions',
+        'Security Implementation',
+        'Data Migration Services',
+        'Cloud Storage Integration'
+      ],
+      color: 'from-indigo-500 to-indigo-600'
     }
-  ]
-
-  const technicalSpecializations = [
-    {
-      title: 'Enterprise Systems',
-      description: 'Large-scale enterprise solutions with complex integration requirements',
-      icon: <Server className="h-8 w-8 text-primary-600" />,
-      specialties: ['ERP Integration', 'CRM Systems', 'Enterprise Architecture', 'Scalability Solutions']
-    },
-    {
-      title: 'Industrial Automation',
-      description: 'Manufacturing and industrial process automation with IoT integration',
-      icon: <Settings className="h-8 w-8 text-primary-600" />,
-      specialties: ['PLC Programming', 'SCADA Systems', 'IoT Integration', 'Process Control']
-    },
-    {
-      title: 'Network Infrastructure',
-      description: 'Advanced networking solutions for reliable and secure connectivity',
-      icon: <Network className="h-8 w-8 text-primary-600" />,
-      specialties: ['Network Design', 'Security Implementation', 'Wireless Solutions', 'Cloud Integration']
-    },
-    {
-      title: 'Software Development',
-      description: 'Custom software solutions tailored to specific business requirements',
-      icon: <Code className="h-8 w-8 text-primary-600" />,
-      specialties: ['Custom Applications', 'Web Development', 'Mobile Apps', 'API Integration']
-    }
-  ]
-
-  const processSteps = [
-    {
-      step: '01',
-      title: 'Technical Assessment',
-      description: 'Comprehensive evaluation of current technical infrastructure and requirements',
-      duration: '1-2 weeks',
-      deliverables: ['System Analysis', 'Technical Audit', 'Requirement Specification']
-    },
-    {
-      step: '02',
-      title: 'Solution Design',
-      description: 'Design of technical architecture and implementation strategy',
-      duration: '2-3 weeks',
-      deliverables: ['Architecture Design', 'Technical Specifications', 'Implementation Plan']
-    },
-    {
-      step: '03',
-      title: 'Development & Configuration',
-      description: 'Implementation of technical solutions with custom development and configuration',
-      duration: '4-12 weeks',
-      deliverables: ['System Development', 'Configuration Setup', 'Integration Testing']
-    },
-    {
-      step: '04',
-      title: 'Testing & Validation',
-      description: 'Comprehensive testing and validation to ensure system reliability and performance',
-      duration: '1-2 weeks',
-      deliverables: ['Test Results', 'Performance Reports', 'Security Validation']
-    },
-    {
-      step: '05',
-      title: 'Deployment & Support',
-      description: 'Production deployment with ongoing technical support and maintenance',
-      duration: 'Ongoing',
-      deliverables: ['Production Deployment', 'Support Documentation', 'Monitoring Setup']
-    }
-  ]
-
-  const benefits = [
-    {
-      icon: <Zap className="h-8 w-8 text-primary-600" />,
-      title: 'Performance Boost',
-      description: 'Optimize system performance and operational efficiency',
-      metrics: '40% Improvement'
-    },
-    {
-      icon: <Shield className="h-8 w-8 text-primary-600" />,
-      title: 'System Reliability',
-      description: 'Enhanced system stability and reduced downtime',
-      metrics: '99.9% Uptime'
-    },
-    {
-      icon: <Target className="h-8 w-8 text-primary-600" />,
-      title: 'Integration Success',
-      description: 'Seamless system integration with minimal disruption',
-      metrics: '98% Success Rate'
-    },
-    {
-      icon: <Clock className="h-8 w-8 text-primary-600" />,
-      title: 'Rapid Support',
-      description: 'Fast response times for technical issues and support',
-      metrics: '< 30 Min Response'
-    }
-  ]
-
-  const serviceAreas = [
-    'System Architecture', 'Database Management', 'Network Solutions', 'Security Implementation',
-    'Cloud Services', 'Mobile Applications', 'Web Development', 'API Integration',
-    'IoT Solutions', 'Automation Systems', 'Performance Tuning', 'Disaster Recovery'
-  ]
-
-  const technologies = [
-    { name: 'Cloud Platforms', category: 'Infrastructure' },
-    { name: 'Database Systems', category: 'Data' },
-    { name: 'Programming Languages', category: 'Development' },
-    { name: 'Integration Tools', category: 'Connectivity' },
-    { name: 'Monitoring Systems', category: 'Operations' },
-    { name: 'Security Tools', category: 'Protection' },
-    { name: 'Automation Platforms', category: 'Efficiency' },
-    { name: 'Analytics Tools', category: 'Intelligence' }
   ]
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Background Image */}
+      {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-600 py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-secondary-900/30"></div>
         <div className="absolute inset-0 opacity-20">
           <Image
-            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80"
+            src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
             alt="Advanced technical solutions and system integration"
             fill
             className="object-cover"
           />
         </div>
+        
+        {/* Floating elements for visual appeal */}
+        <div className="absolute top-20 left-10 w-16 h-16 bg-primary-400/20 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-20 right-16 w-24 h-24 bg-primary-300/20 rounded-full animate-pulse delay-1000"></div>
+        
         <div className="max-w-7xl mx-auto text-center px-4 relative z-10">
           <FadeInView>
-            <div className="inline-flex items-center bg-primary-100/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Award className="h-4 w-4 text-primary-200 mr-2" />
-              <span className="text-primary-200 text-sm font-medium">Certified Technical Experts</span>
+            <div className="inline-flex items-center bg-primary-100/15 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
+              <Award className="h-5 w-5 text-primary-200 mr-3" />
+              <span className="text-primary-200 text-sm font-semibold">Your Technology Innovation Partner</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Technical Solutions &
-              <span className="block text-primary-300">System Integration</span>
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+              Technical Solutions
+              <span className="block bg-gradient-to-r from-primary-300 to-primary-100 bg-clip-text text-transparent">
+                Made Simple
+              </span>
             </h1>
-            <p className="text-xl text-primary-100 leading-relaxed mb-8 max-w-3xl mx-auto">
-              Advanced technical consulting and implementation services including system integration, 
-              process automation, and comprehensive technology solutions for modern business needs.
+            <p className="text-2xl text-primary-100 leading-relaxed mb-12 max-w-4xl mx-auto">
+              Looking to modernize your technology infrastructure? We're here to help. Our comprehensive technical 
+              solutions are designed to streamline operations, boost efficiency, and drive digital transformation for businesses of all sizes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-white text-primary-800 font-semibold rounded-lg hover:bg-primary-50 transition-all transform hover:scale-105"
+                className="inline-flex items-center px-10 py-5 bg-white text-primary-800 font-bold rounded-xl hover:bg-primary-50 transition-all transform hover:scale-105 shadow-lg"
               >
-                Get Technical Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Get Started Today
+                <ArrowRight className="ml-3 h-6 w-6" />
               </Link>
               <Link
                 href="#services"
-                className="inline-flex items-center px-8 py-4 border border-primary-300 text-white font-semibold rounded-lg hover:bg-primary-700/30 transition-all"
+                className="inline-flex items-center px-10 py-5 border border-primary-300 text-white font-bold rounded-xl hover:bg-primary-700/50 transition-all backdrop-blur-sm"
               >
-                Explore Solutions
-                <ChevronRight className="ml-2 h-5 w-5" />
+                Our Services
+                <ChevronRight className="ml-3 h-6 w-6" />
               </Link>
             </div>
           </FadeInView>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <FadeInView key={index} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="flex justify-center mb-4">{benefit.icon}</div>
-                  <div className="text-2xl font-bold text-secondary-900 mb-2">{benefit.metrics}</div>
-                  <div className="text-sm text-secondary-600">{benefit.title}</div>
-                </div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Visual Section */}
-      <section className="py-12 bg-primary-50">
+      {/* Services Section */}
+      <section id="services" className="py-24 bg-gradient-to-br from-primary-50 to-white">
         <div className="max-w-7xl mx-auto px-4">
           <FadeInView>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="relative h-64 rounded-xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="System integration and technical architecture"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-primary-600/20"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-bold">System Integration</h3>
-                  <p className="text-sm">Complex system connectivity</p>
-                </div>
+            <div className="text-center mb-20">
+              <div className="inline-block bg-primary-100 rounded-full px-6 py-2 mb-8">
+                <span className="text-primary-700 font-semibold text-sm">COMPREHENSIVE SOLUTIONS</span>
               </div>
-              <div className="relative h-64 rounded-xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Process automation and workflow optimization"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-primary-600/20"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-bold">Process Automation</h3>
-                  <p className="text-sm">Intelligent workflow systems</p>
-                </div>
-              </div>
-              <div className="relative h-64 rounded-xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Technical support and system monitoring"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-primary-600/20"></div>
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="text-lg font-bold">24/7 Support</h3>
-                  <p className="text-sm">Continuous monitoring</p>
-                </div>
-              </div>
-            </div>
-          </FadeInView>
-        </div>
-      </section>
-
-      {/* Core Services Section */}
-      <section id="services" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                Comprehensive Technical Solutions
+              <h2 className="text-5xl font-bold text-secondary-900 mb-8">
+                Complete Technical Solutions
               </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                From system integration to process automation, we provide complete technical 
-                solutions tailored to your business requirements and technology objectives.
+              <p className="text-2xl text-secondary-600 max-w-4xl mx-auto leading-relaxed">
+                Whether you're implementing your first automation system or scaling enterprise infrastructure, 
+                we provide the technical expertise and support you need to succeed in digital transformation.
               </p>
             </div>
           </FadeInView>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {coreServices.map((service, index) => (
-              <FadeInView key={index} delay={index * 0.1}>
-                <div className="bg-primary-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 border border-primary-200">
-                  <div className="flex items-center mb-6">
-                    <div className="bg-primary-100 p-3 rounded-lg mr-4 text-primary-600">
+              <FadeInView key={index} delay={index * 0.15}>
+                <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-primary-100 group overflow-hidden relative">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  
+                  <div className="flex items-center mb-8 relative z-10">
+                    <div className={`bg-gradient-to-br ${service.color} p-4 rounded-2xl mr-6 text-white group-hover:scale-110 transition-transform duration-300`}>
                       {service.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-secondary-900">{service.title}</h3>
+                    <h3 className="text-2xl font-bold text-secondary-900">{service.title}</h3>
                   </div>
-                  <p className="text-secondary-600 mb-6">{service.description}</p>
-                  <ul className="space-y-2">
+                  <p className="text-secondary-600 mb-8 text-lg leading-relaxed relative z-10">{service.description}</p>
+                  <div className="space-y-3 relative z-10">
+                    <div className="text-sm font-semibold text-secondary-800 mb-4">What's Included:</div>
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-secondary-700">
-                        <CheckCircle className="h-4 w-4 text-status-success mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Specializations */}
-      <section className="py-20 bg-primary-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                Technical Specialization Areas
-              </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                Our specialized expertise covers diverse technology domains with deep 
-                technical knowledge and industry-specific implementation experience.
-              </p>
-            </div>
-          </FadeInView>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {technicalSpecializations.map((specialization, index) => (
-              <FadeInView key={index} delay={index * 0.2}>
-                <div className="bg-white rounded-2xl p-8 border border-primary-200 shadow-lg">
-                  <div className="flex items-start mb-6">
-                    <div className="mr-6">{specialization.icon}</div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-secondary-900 mb-3">{specialization.title}</h3>
-                      <p className="text-secondary-600 mb-4">{specialization.description}</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    {specialization.specialties.map((specialty, idx) => (
-                      <div key={idx} className="bg-primary-50 rounded-lg px-4 py-2 text-sm text-secondary-700 border border-primary-200">
-                        {specialty}
+                      <div key={idx} className="flex items-center text-secondary-700">
+                        <CheckCircle className="h-4 w-4 text-status-success mr-3 flex-shrink-0" />
+                        <span className="text-sm font-medium">{feature}</span>
                       </div>
                     ))}
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-primary-100 relative z-10">
+                    <Link 
+                      href="/contact" 
+                      className="text-primary-600 font-semibold hover:text-primary-700 flex items-center group-hover:translate-x-2 transition-transform"
+                    >
+                      Get Quote <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
               </FadeInView>
@@ -357,243 +210,110 @@ export default function TechnicalSolutionsPage() {
         </div>
       </section>
 
-      {/* Digital Transformation Image Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                Digital Transformation & Innovation
-              </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                Leading digital transformation initiatives with cutting-edge technology solutions
-              </p>
-            </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80"
-                alt="Digital transformation and advanced technology solutions"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-primary-600/30"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h3 className="text-3xl font-bold mb-4">Driving Digital Innovation</h3>
-                  <p className="text-lg">Transforming businesses through advanced technology</p>
-                </div>
-              </div>
-            </div>
-          </FadeInView>
-        </div>
-      </section>
-
-      {/* Process Timeline */}
-      <section className="py-20 bg-primary-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                Our Technical Implementation Process
-              </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                A systematic approach to technical solution delivery ensuring quality, 
-                reliability, and seamless integration with your existing systems.
-              </p>
-            </div>
-          </FadeInView>
-
-          <div className="relative">
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-0.5 w-0.5 bg-primary-400 h-full"></div>
-            
-            <div className="space-y-12">
-              {processSteps.map((step, index) => (
-                <FadeInView key={index} delay={index * 0.2}>
-                  <div className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                      <div className="bg-white rounded-2xl p-8 shadow-lg">
-                        <div className="flex items-center mb-4">
-                          <div className="bg-primary-600 text-white text-lg font-bold w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                            {step.step}
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-secondary-900">{step.title}</h3>
-                            <div className="text-primary-600 font-medium">{step.duration}</div>
-                          </div>
-                        </div>
-                        <p className="text-secondary-600 mb-4">{step.description}</p>
-                        <div className="space-y-2">
-                          <div className="text-sm font-medium text-secondary-800 mb-2">Key Deliverables:</div>
-                          {step.deliverables.map((deliverable, idx) => (
-                            <div key={idx} className="flex items-center text-sm text-secondary-600">
-                              <FileText className="h-3 w-3 text-primary-500 mr-2" />
-                              {deliverable}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                    
-                    <div className="hidden md:block w-5/12"></div>
-                  </div>
-                </FadeInView>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Areas */}
+      {/* Why Choose Us Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                Technical Service Areas
-              </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                Comprehensive coverage of all technical domains with specialized 
-                expertise in modern technology solutions and system integration.
-              </p>
-            </div>
-          </FadeInView>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {serviceAreas.map((area, index) => (
-              <FadeInView key={index} delay={index * 0.05}>
-                <div className="bg-primary-50 rounded-xl p-4 text-center hover:bg-primary-100 transition-all">
-                  <div className="text-sm font-semibold text-secondary-900">{area}</div>
-                </div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies & Platforms */}
-      <section className="py-20 bg-primary-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                Technologies & Platforms
-              </h2>
-              <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
-                We leverage cutting-edge technologies and industry-leading platforms 
-                for robust, scalable, and future-ready technical solutions.
-              </p>
-            </div>
-          </FadeInView>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {technologies.map((tech, index) => (
-              <FadeInView key={index} delay={index * 0.05}>
-                <div className="bg-white rounded-xl p-6 text-center hover:bg-primary-50 transition-all border border-primary-200">
-                  <div className="text-lg font-semibold text-secondary-900 mb-2">{tech.name}</div>
-                  <div className="text-sm text-primary-600">{tech.category}</div>
-                </div>
-              </FadeInView>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Architecture Image Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <FadeInView>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl font-bold text-secondary-900 mb-6">
-                  Advanced Technical Architecture
-                </h2>
-                <p className="text-xl text-secondary-600 mb-8">
-                  Robust technical architecture design and implementation ensuring 
-                  scalability, security, and optimal performance for your systems.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <Layers className="h-5 w-5 text-primary-600 mr-3" />
-                    <span className="text-secondary-700">Scalable Architecture Design</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Network className="h-5 w-5 text-primary-600 mr-3" />
-                    <span className="text-secondary-700">Secure Network Integration</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Monitor className="h-5 w-5 text-primary-600 mr-3" />
-                    <span className="text-secondary-700">Performance Monitoring</span>
-                  </div>
-                </div>
-              </div>
-              <div className="relative h-80 rounded-xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Technical architecture and system design"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-primary-600/10"></div>
-              </div>
-            </div>
-          </FadeInView>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-primary-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeInView>
               <div>
                 <h2 className="text-4xl font-bold text-secondary-900 mb-8">
-                  Why Choose Terrafo International Technical Solutions?
+                  Why Partner with Terrafo International?
                 </h2>
                 <div className="space-y-6">
-                  {benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start">
-                      <div className="mr-6 mt-1">{benefit.icon}</div>
-                      <div>
-                        <h3 className="text-xl font-bold text-secondary-900 mb-2">{benefit.title}</h3>
-                        <p className="text-secondary-600 mb-2">{benefit.description}</p>
-                        <div className="text-primary-600 font-semibold">{benefit.metrics}</div>
-                      </div>
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 p-3 rounded-lg mr-6 mt-1">
+                      <Code className="h-6 w-6 text-primary-600" />
                     </div>
-                  ))}
+                    <div>
+                      <h3 className="text-xl font-bold text-secondary-900 mb-2">Modern Solutions</h3>
+                      <p className="text-secondary-600">
+                        As a tech-forward startup, we implement cutting-edge solutions without legacy constraints or outdated practices.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 p-3 rounded-lg mr-6 mt-1">
+                      <Star className="h-6 w-6 text-primary-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-secondary-900 mb-2">Cost-Effective Innovation</h3>
+                      <p className="text-secondary-600">
+                        Get enterprise-level technical solutions at competitive startup rates, with flexible pricing that grows with you.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 p-3 rounded-lg mr-6 mt-1">
+                      <Phone className="h-6 w-6 text-primary-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-secondary-900 mb-2">Direct Technical Access</h3>
+                      <p className="text-secondary-600">
+                        Work directly with our technical team and decision-makers for faster implementation and customized solutions.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="bg-primary-100 p-3 rounded-lg mr-6 mt-1">
+                      <Shield className="h-6 w-6 text-primary-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-secondary-900 mb-2">Agile Implementation</h3>
+                      <p className="text-secondary-600">
+                        We're building our reputation through successful projects, ensuring agile delivery and exceptional results for every client.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </FadeInView>
 
             <FadeInView delay={0.3}>
               <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl p-12 text-white">
-                <h3 className="text-3xl font-bold mb-6">Ready to Transform Your Technology?</h3>
-                <p className="text-primary-100 mb-8 text-lg">
-                  Let our technical experts optimize your systems and processes with 
-                  advanced technology solutions tailored to your business needs.
+                <h3 className="text-3xl font-bold mb-6">Ready to Innovate with Technology?</h3>
+                <p className="text-primary-100 mb-8 text-lg leading-relaxed">
+                  Let's transform your business with smart technical solutions. Get expert consultation 
+                  and competitive rates for your technology modernization needs.
                 </p>
-                <div className="space-y-4">
+                
+                <div className="space-y-6 mb-8">
                   <div className="flex items-center">
-                    <Phone className="h-5 w-5 mr-3" />
-                    <span>Free Technical Assessment</span>
+                    <CheckCircle className="h-6 w-6 mr-4 text-primary-300" />
+                    <span className="text-lg">Free technical assessment</span>
                   </div>
                   <div className="flex items-center">
-                    <Calculator className="h-5 w-5 mr-3" />
-                    <span>Custom Solution Design</span>
+                    <CheckCircle className="h-6 w-6 mr-4 text-primary-300" />
+                    <span className="text-lg">Transparent project pricing</span>
                   </div>
                   <div className="flex items-center">
-                    <Star className="h-5 w-5 mr-3" />
-                    <span>Implementation Guarantee</span>
+                    <CheckCircle className="h-6 w-6 mr-4 text-primary-300" />
+                    <span className="text-lg">Dedicated technical team</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="h-6 w-6 mr-4 text-primary-300" />
+                    <span className="text-lg">Scalable solution design</span>
                   </div>
                 </div>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-all mt-8 transform hover:scale-105"
-                >
-                  Get Technical Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href="/contact"
+                    className="flex-1 inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 font-bold rounded-xl hover:bg-primary-50 transition-all transform hover:scale-105"
+                  >
+                    Get Free Quote
+                    <ArrowRight className="ml-3 h-5 w-5" />
+                  </Link>
+                  <Link
+                    href="tel:+1234567890"
+                    className="flex-1 inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all"
+                  >
+                    <Phone className="mr-3 h-5 w-5" />
+                    Call Now
+                  </Link>
+                </div>
               </div>
             </FadeInView>
           </div>
